@@ -405,66 +405,62 @@ async function loadStats(){
 try{
 
 const response = await fetch(
-`${API_URL}/api/drugs`
+
+`${API_URL}/api/drugs/stats/dashboard`
+
 );
 
 const data = await response.json();
 
 
-// Tổng số thuốc
+
 document.getElementById(
+
 'drugCount'
+
 ).innerText =
-data.length;
+
+data.totalDrugs;
 
 
-// Số hoạt chất không trùng
-const ingredients = new Set(
-data.map(
-d => d.active_ingredient
-)
-);
 
 document.getElementById(
+
 'ingredientCount'
+
 ).innerText =
-ingredients.size;
+
+data.totalIngredients;
 
 
-// Số công dụng không trùng
-const usages = new Set(
-data.map(
-d => d.usage
-)
-);
 
 document.getElementById(
+
 'usageCount'
+
 ).innerText =
-usages.size;
 
+data.totalUsages;
 
-const userResponse =
-await fetch(
-`${API_URL}/api/auth/count`
-);
-
-const userData =
-await userResponse.json();
 
 
 document.getElementById(
-'userCount'
-).innerText =
-userData.totalUsers;
 
-}catch(error){
+'userCount'
+
+).innerText =
+
+data.totalUsers;
+
+}
+catch(error){
 
 console.log(error);
 
 }
 
 }
+
 
 loadStats();
 
