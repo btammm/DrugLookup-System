@@ -294,7 +294,7 @@ Người dùng
 
 </p>
 
-</div>>
+</div>
 
 
 
@@ -402,70 +402,61 @@ window.location.href=
 
 async function loadStats(){
 
+try{
 
-
-const response=
-
-
-await fetch(
-
+const response = await fetch(
 `${API_URL}/api/drugs`
-
 );
 
+const data = await response.json();
 
 
-const data=
-
-await response.json();
-
-
-
-
+// Tổng số thuốc
 document.getElementById(
-
 'drugCount'
-
-).innerText=
-
-
-data.totalDrugs;
+).innerText =
+data.length;
 
 
-
+// Số hoạt chất không trùng
+const ingredients = new Set(
+data.map(
+d => d.active_ingredient
+)
+);
 
 document.getElementById(
-
 'ingredientCount'
+).innerText =
+ingredients.size;
 
-).innerText=
 
-
-data.totalIngredients;
+// Số công dụng không trùng
+const usages = new Set(
+data.map(
+d => d.usage
+)
+);
 
 document.getElementById(
-
 'usageCount'
-
-).innerText=
-
-data.totalUsages;
+).innerText =
+usages.size;
 
 
+// Tạm thời hiển thị 1 user
 document.getElementById(
-
 'userCount'
+).innerText =
+1;
 
-).innerText=
+}catch(error){
 
-
-data.totalUsers;
-
-
+console.log(error);
 
 }
 
-
+}
 
 loadStats();
 
