@@ -133,7 +133,7 @@ Thuốc mới thêm
 </div>
 
 
-
+<script src="config.js"></script>
 
 <script>
 
@@ -166,7 +166,7 @@ const response=
 
 await fetch(
 
-'http://localhost:5000/api/drugs/stats/top-usages'
+`${API_URL}/api/drugs`
 
 );
 
@@ -235,7 +235,7 @@ const response=
 
 await fetch(
 
-'http://localhost:5000/api/drugs/stats/top-ingredients'
+`${API_URL}/api/drugs/stats/top-ingredients`
 
 );
 
@@ -303,7 +303,7 @@ const response=
 
 await fetch(
 
-'http://localhost:5000/api/drugs/stats/latest'
+`${API_URL}/api/drugs/stats/latest`
 
 );
 

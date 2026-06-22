@@ -108,7 +108,7 @@ placeholder="Mật khẩu">
 
 </div>
 
-
+<script src="config.js"></script>
 
 <script>
 
@@ -136,7 +136,7 @@ document.getElementById("password").value;
 
 const response=await fetch(
 
-'http://localhost:5000/api/auth/register',
+`${API_URL}/api/auth/register`,
 
 {
 

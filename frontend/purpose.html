@@ -167,7 +167,7 @@ id="tbody">
 
 
 
-
+<script src="config.js"></script>
 
 
 <script>
@@ -180,7 +180,7 @@ const response=
 
 await fetch(
 
-'http://localhost:5000/api/drugs/usages'
+`${API_URL}/api/drugs/usages`
 
 );
 
@@ -316,7 +316,7 @@ const response=
 
 await fetch(
 
-'http://localhost:5000/api/drugs/usages',
+`${API_URL}/api/drugs/usages`,
 
 {
 
@@ -394,7 +394,7 @@ const response=
 
 await fetch(
 
-`http://localhost:5000/api/drugs/usages/${id}`
+`${API_URL}/api/drugs/usages/${id}`
 
 ,
 
@@ -470,7 +470,7 @@ const response=
 
 await fetch(
 
-`http://localhost:5000/api/drugs/usages/${id}`
+`${API_URL}/api/drugs/usages/${id}`
 
 ,
 

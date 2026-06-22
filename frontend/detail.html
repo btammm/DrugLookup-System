@@ -83,7 +83,7 @@ cursor:pointer;
 
 </div>
 
-
+<script src="config.js"></script>
 
 <script>
 
@@ -105,7 +105,7 @@ params.get("id");
 const response=
 await fetch(
 
-`http://localhost:5000/api/drugs/${id}`
+`${API_URL}/api/drugs/${id}`
 
 );
 
