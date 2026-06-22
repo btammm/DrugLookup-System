@@ -18,15 +18,51 @@ Tra cứu công dụng
 
 <style>
 
-
 body{
 
-font-family:Arial;
+font-family:'Segoe UI',sans-serif;
 
-padding:30px;
+background:#f5f7fb;
 
-background:#f2f5fa;
+padding:40px;
 
+}
+
+
+
+.container{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+
+
+h2{
+
+text-align:center;
+
+font-size:36px;
+
+margin-bottom:40px;
+
+color:#1e293b;
+
+}
+
+
+
+.search-box{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+margin-bottom:40px;
 
 }
 
@@ -35,23 +71,52 @@ background:#f2f5fa;
 input{
 
 
-padding:10px;
+width:450px;
 
 
-width:300px;
+padding:15px 20px;
+
+
+font-size:16px;
+
+
+border:1px solid #ddd;
+
+
+border-radius:12px;
+
+
+outline:none;
+
+
+transition:0.3s;
 
 
 }
 
 
 
+input:focus{
+
+
+border-color:#2563eb;
+
+
+box-shadow:0 0 10px rgba(37,99,235,.2);
+
+
+}
+
+
+
+
 button{
 
 
-padding:10px;
+padding:15px 25px;
 
 
-background:#2196F3;
+background:#2563eb;
 
 
 color:white;
@@ -60,10 +125,43 @@ color:white;
 border:none;
 
 
+border-radius:12px;
+
+
+font-size:16px;
+
+
 cursor:pointer;
 
 
+transition:0.3s;
+
+
 }
+
+
+
+button:hover{
+
+
+background:#1d4ed8;
+
+
+}
+
+
+
+
+
+#result{
+
+
+margin-top:20px;
+
+
+}
+
+
 
 
 
@@ -73,18 +171,58 @@ cursor:pointer;
 background:white;
 
 
-padding:15px;
+padding:20px;
 
 
-margin-top:10px;
+margin-bottom:20px;
 
 
-border-radius:10px;
+border-radius:15px;
+
+
+box-shadow:0 5px 15px rgba(0,0,0,.05);
 
 
 }
 
 
+
+.card h3{
+
+
+font-size:24px;
+
+
+margin-bottom:10px;
+
+
+color:#2563eb;
+
+
+}
+
+
+
+.card p{
+
+
+font-size:16px;
+
+
+color:#555;
+
+
+}
+
+
+
+.card button{
+
+
+margin-top:15px;
+
+
+}
 
 </style>
 
@@ -96,6 +234,8 @@ border-radius:10px;
 <body>
 
 
+<div class="container">
+
 <h2>
 
 Tra cứu công dụng
@@ -103,32 +243,36 @@ Tra cứu công dụng
 </h2>
 
 
+<div class="search-box">
 
 
 <input
 
 id="usage"
 
-placeholder="Nhập công dụng">
+placeholder="Nhập tên công dụng..."
+
+>
 
 
-
-<button
-
-onclick="search()">
+<button onclick="search()">
 
 Tìm kiếm
 
 </button>
 
 
+</div>
 
 
-<div
+<div id="result">
 
-id="result">
 
 </div>
+
+
+</div>
+</body>
 
 
 
@@ -155,6 +299,28 @@ window.location.href=
 'login.html';
 
 }
+
+document.getElementById(
+
+'usage'
+
+)
+
+.addEventListener(
+
+'keypress',
+
+function(e){
+
+if(e.key==='Enter'){
+
+search();
+
+}
+
+}
+
+);
 
 async function search(){
 
@@ -189,7 +355,27 @@ const data=
 
 await response.json();
 
+if(data.length===0){
 
+document.getElementById(
+
+'result'
+
+).innerHTML=
+
+`
+
+<div class="card">
+
+Không tìm thấy công dụng phù hợp.
+
+</div>
+
+`;
+
+return;
+
+}
 
 let html='';
 

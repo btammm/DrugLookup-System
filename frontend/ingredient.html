@@ -8,50 +8,208 @@
     <style>
 
         body{
-            font-family:Arial;
-            background:#f2f5fa;
-            padding:30px;
-        }
 
-        h2{
-            margin-bottom:20px;
-        }
+font-family:'Segoe UI',sans-serif;
 
-        input{
-            padding:10px;
-            width:300px;
-            border:1px solid #ccc;
-            border-radius:5px;
-        }
+background:#f5f7fb;
 
-        button{
-            padding:10px 15px;
-            background:#2196F3;
-            color:white;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-        }
+padding:40px;
 
-        #result{
-            margin-top:20px;
-        }
+}
 
-        .card{
-            background:white;
-            padding:15px;
-            margin-top:10px;
-            border-radius:10px;
-            box-shadow:0 0 5px rgba(0,0,0,.1);
-        }
 
-        .card h3{
-            margin-bottom:10px;
-        }
+.container{
 
-        .card button{
-            margin-top:10px;
-        }
+max-width:900px;
+
+margin:auto;
+
+}
+
+
+h2{
+
+text-align:center;
+
+font-size:36px;
+
+margin-bottom:40px;
+
+color:#1e293b;
+
+}
+
+
+
+.search-box{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+margin-bottom:40px;
+
+}
+
+
+
+input{
+
+
+width:450px;
+
+
+padding:15px 20px;
+
+
+font-size:16px;
+
+
+border:1px solid #ddd;
+
+
+border-radius:12px;
+
+
+outline:none;
+
+
+transition:0.3s;
+
+
+}
+
+
+
+input:focus{
+
+
+border-color:#2563eb;
+
+
+box-shadow:0 0 10px rgba(37,99,235,.2);
+
+
+}
+
+
+
+
+button{
+
+
+padding:15px 25px;
+
+
+background:#2563eb;
+
+
+color:white;
+
+
+border:none;
+
+
+border-radius:12px;
+
+
+font-size:16px;
+
+
+cursor:pointer;
+
+
+transition:0.3s;
+
+
+}
+
+
+
+button:hover{
+
+
+background:#1d4ed8;
+
+
+}
+
+
+
+
+
+#result{
+
+
+margin-top:20px;
+
+
+}
+
+
+
+
+
+.card{
+
+
+background:white;
+
+
+padding:20px;
+
+
+margin-bottom:20px;
+
+
+border-radius:15px;
+
+
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+
+
+}
+
+
+
+.card h3{
+
+
+font-size:24px;
+
+
+margin-bottom:10px;
+
+
+color:#2563eb;
+
+
+}
+
+
+
+.card p{
+
+
+font-size:16px;
+
+
+color:#555;
+
+
+}
+
+
+
+.card button{
+
+
+margin-top:15px;
+
+
+}
 
     </style>
 
@@ -59,17 +217,52 @@
 
 <body>
 
-    <h2>Tra cứu hoạt chất</h2>
+    <div class="container">
 
-    <input
-        id="ingredient"
-        placeholder="Nhập hoạt chất">
 
-    <button onclick="search()">
-        Tìm kiếm
-    </button>
+<h2>
 
-    <div id="result"></div>
+Tra cứu hoạt chất
+
+</h2>
+
+
+
+<div class="search-box">
+
+
+<input
+
+id="ingredient"
+
+placeholder="Nhập tên hoạt chất..."
+
+>
+
+
+
+<button onclick="search()">
+
+Tìm kiếm
+
+</button>
+
+
+
+</div>
+
+
+
+
+<div id="result">
+
+
+</div>
+
+
+
+</div>
+</body>
 
 
 <script src="config.js"></script>
@@ -96,6 +289,28 @@ window.location.href=
 
 }
 
+document.getElementById(
+
+'ingredient'
+
+)
+
+.addEventListener(
+
+'keypress',
+
+function(e){
+
+if(e.key==='Enter'){
+
+search();
+
+}
+
+}
+
+);
+
 async function search(){
 
     let ingredient =
@@ -111,6 +326,29 @@ async function search(){
 
     const data = await response.json();
 
+    if(data.length===0){
+
+document.getElementById(
+
+'result'
+
+).innerHTML=
+
+`
+
+
+<div class="card">
+
+Không tìm thấy thuốc phù hợp.
+
+</div>
+
+
+`;
+
+return;
+
+}    
 
     let html='';
 
