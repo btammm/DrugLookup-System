@@ -432,4 +432,27 @@ message:"Đổi mật khẩu thành công"
 
 });
 
+
+// Đếm tổng số người dùng
+router.get("/count", (req, res) => {
+
+    const sql = `
+    SELECT COUNT(*) AS totalUsers
+    FROM users
+    `;
+
+    db.query(sql, (err, result) => {
+
+        if (err) {
+
+            return res.status(500).json(err);
+
+        }
+
+        res.json(result[0]);
+
+    });
+
+});
+
 module.exports = router;

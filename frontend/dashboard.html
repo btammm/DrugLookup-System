@@ -444,11 +444,19 @@ document.getElementById(
 usages.size;
 
 
-// Tạm thời hiển thị 1 user
+const userResponse =
+await fetch(
+`${API_URL}/api/auth/count`
+);
+
+const userData =
+await userResponse.json();
+
+
 document.getElementById(
 'userCount'
 ).innerText =
-1;
+userData.totalUsers;
 
 }catch(error){
 
