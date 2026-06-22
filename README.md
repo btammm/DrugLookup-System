@@ -1,106 +1,202 @@
 # Drug Lookup System
 
-Drug Lookup System là hệ thống tra cứu thuốc theo hoạt chất, tên thương mại và công dụng được phát triển trong môn Công nghệ Phần mềm - HUTECH.
-
-## Thành viên nhóm
-
-* Phạm Bảo Tâm
-* Trần Xuân Thanh
-* Nguyễn Quang Huy
-* Nguyễn Quang Tiến
-* Lê Đỗ Duy Tân
+Drug Lookup System là hệ thống tra cứu thuốc theo hoạt chất, tên thương mại và công dụng được phát triển trong môn **Công nghệ Phần mềm** tại **Trường Đại học Công nghệ TP.HCM (HUTECH)** theo mô hình **Agile Scrum**.
 
 ---
 
-## Công nghệ sử dụng
+# Thành viên nhóm
 
-### Frontend
+| MSSV       | Họ và tên         |
+| ---------- | ----------------- |
+| 2380601985 | Phạm Bảo Tâm      |
+| 2380614806 | Trần Xuân Thanh   |
+| 2380614880 | Nguyễn Quang Huy  |
+| 2380614961 | Nguyễn Quang Tiến |
+| 2380613796 | Lê Đỗ Duy Tân     |
+
+---
+
+# Mục tiêu dự án
+
+Xây dựng một hệ thống hỗ trợ người dùng tra cứu thông tin thuốc thông qua:
+
+* Hoạt chất
+* Tên thương mại
+* Công dụng
+* Mục đích sử dụng
+
+Hệ thống cho phép quản lý dữ liệu thuốc, tài khoản người dùng và thống kê thông tin phục vụ tra cứu.
+
+---
+
+# Công nghệ sử dụng
+
+## Frontend
 
 * HTML5
 * CSS3
 * JavaScript
 
-### Backend
+## Backend
 
-* NodeJS
-* ExpressJS
+* Node.js
+* Express.js
 
-### Database
+## Database
 
-* MySQL
+* MySQL 8.4
 * Aiven Cloud Database
 
-### Công cụ quản lý dự án
+## Authentication
 
-* Jira Scrum
+* JWT
+* Bcrypt
+
+## Quản lý dự án
+
+* Agile Scrum
+* Jira
+
+## Quản lý mã nguồn
+
 * Git
 * GitHub
 
+## Triển khai hệ thống
+
+* Vercel
+* Render
+* Aiven Cloud
+
 ---
 
-## Chức năng hệ thống
+# Kiến trúc hệ thống
 
-### Người dùng
+Frontend (Vercel)
 
-* Đăng ký tài khoản
+↓
+
+Backend API (Render)
+
+↓
+
+MySQL Database (Aiven Cloud)
+
+---
+
+# Chức năng hệ thống
+
+## Quản lý tài khoản
+
+* Đăng ký
 * Đăng nhập
 * Đăng xuất
-* Cập nhật hồ sơ
 * Đổi mật khẩu
+* Cập nhật thông tin cá nhân
 
-### Tra cứu thuốc
+## Tra cứu thuốc
 
-* Tra cứu theo tên thương mại
+* Tra cứu theo tên thuốc
 * Tra cứu theo hoạt chất
 * Tra cứu theo công dụng
 * Xem chi tiết thuốc
 
-### Quản lý dữ liệu
+## Quản lý thuốc
 
-* Quản lý thuốc
-* Quản lý hoạt chất
-* Quản lý công dụng
+* Thêm thuốc
+* Chỉnh sửa thuốc
+* Xóa thuốc
+* Quản lý danh sách thuốc
 
-### Thống kê
+## Thống kê
 
-* Thống kê số lượng thuốc
-* Thống kê số lượng hoạt chất
-* Thống kê công dụng
-
----
-
-## Cơ sở dữ liệu
-
-Bảng sử dụng:
-
-* users
-* drugs
-* usages
-* drug_usages
+* Thuốc mới cập nhật
+* Số lượng thuốc
+* Thống kê dữ liệu thuốc
 
 ---
 
-## Cài đặt hệ thống
+# Triển khai hệ thống
 
-Clone dự án
+## Frontend
+
+Vercel
+
+URL:
+
+https://drug-lookup-system.vercel.app/login.html
+
+---
+
+## Backend
+
+Render
+
+API URL:
+
+https://druglookup-api.onrender.com
+
+---
+
+## Database
+
+Aiven Cloud MySQL
+
+---
+
+# Thông tin truy cập
+
+## Demo Account
+
+Email:
+
+[teacher@example.com](mailto:teacher@example.com)
+
+Password:
+
+123456
+
+---
+
+# Hướng dẫn cài đặt
+
+## Clone Repository
 
 ```bash
 git clone https://github.com/btammm/DrugLookup-System.git
 ```
 
-Di chuyển vào thư mục backend
+---
+
+## Cài đặt Backend
 
 ```bash
 cd backend
-```
 
-Cài đặt package
-
-```bash
 npm install
 ```
 
-Khởi động server
+---
+
+## Tạo file .env
+
+```env
+DB_HOST=
+
+DB_PORT=
+
+DB_USER=
+
+DB_PASSWORD=
+
+DB_NAME=
+
+JWT_SECRET=
+```
+
+---
+
+## Chạy Backend
 
 ```bash
 node server.js
@@ -108,22 +204,93 @@ node server.js
 
 ---
 
-## Triển khai
+## Chạy Frontend
 
-Backend: Render
+Mở:
 
-Database: Aiven
+frontend/login.html
 
-Frontend: Vercel
-
----
-
-## Repository
-
-https://github.com/btammm/DrugLookup-System
+hoặc truy cập trực tiếp qua Vercel.
 
 ---
 
-## Release
+# Agile Scrum
 
-v1.0.0
+## Product Backlog
+
+* 10 Epics
+* 20 User Stories
+* 50+ Tasks/Subtasks
+
+---
+
+## Sprint
+
+Sprint 1
+
+Authentication & UI Design
+
+Sprint 2
+
+Drug Lookup Module
+
+Sprint 3
+
+Statistics, Deployment & Testing
+
+---
+
+## Scrum Artifacts
+
+* Product Backlog
+* Sprint Backlog
+* Sprint Planning
+* Daily Scrum
+* Sprint Review
+* Sprint Retrospective
+* Burndown Chart
+* Scrum Board
+
+---
+
+# Git Flow
+
+## Branches
+
+main
+
+develop
+
+feature/login
+
+feature/drug-management
+
+feature/statistics
+
+feature/profile
+
+feature/deployment
+
+---
+
+# Release
+
+Release 1.0
+
+Implemented Features
+
+* Authentication
+* Drug Lookup
+* Statistics
+* Profile Management
+* Cloud Deployment
+
+---
+
+# License
+
+Academic Project
+
+HUTECH Software Engineering Course
+
+2026
