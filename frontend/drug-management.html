@@ -112,7 +112,7 @@ Thêm thuốc
 
 <tr>
 
-<th>ID</th>
+<th>STT</th>
 
 <th>Tên thuốc</th>
 
@@ -171,17 +171,15 @@ let html='';
 
 
 
-drugs.forEach(drug=>{
-
+drugs.forEach((drug,index)=>{
 
 html+=`
 
 <tr>
 
-
 <td>
 
-${drug.id}
+${index+1}
 
 </td>
 
