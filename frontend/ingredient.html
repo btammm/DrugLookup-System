@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tra cứu hoạt chất</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f2f5fa;
+            padding:30px;
+        }
+
+        h2{
+            margin-bottom:20px;
+        }
+
+        input{
+            padding:10px;
+            width:300px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            padding:10px 15px;
+            background:#2196F3;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        #result{
+            margin-top:20px;
+        }
+
+        .card{
+            background:white;
+            padding:15px;
+            margin-top:10px;
+            border-radius:10px;
+            box-shadow:0 0 5px rgba(0,0,0,.1);
+        }
+
+        .card h3{
+            margin-bottom:10px;
+        }
+
+        .card button{
+            margin-top:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Tra cứu hoạt chất</h2>
+
+    <input
+        id="ingredient"
+        placeholder="Nhập hoạt chất">
+
+    <button onclick="search()">
+        Tìm kiếm
+    </button>
+
+    <div id="result"></div>
+
+
+<script>
+
+const user = JSON.parse(
+
+localStorage.getItem(
+
+'user'
+
+)
+
+);
+
+
+
+if(!user){
+
+window.location.href=
+
+'login.html';
+
+}
+
+async function search(){
+
+    let ingredient =
+    document.getElementById("ingredient").value;
+
+
+    const response = await fetch(
+
+`http://localhost:5000/api/drugs/ingredient/${ingredient}`
+
+    );
+
+
+    const data = await response.json();
+
+
+    let html='';
+
+
+    data.forEach(drug=>{
+
+
+html += `
+
+<div class="card">
+
+<h3>${drug.trade_name}</h3>
+
+<p>
+
+Hoạt chất:
+${drug.active_ingredient}
+
+</p>
+
+<button
+
+onclick="detail(${drug.id})">
+
+Xem chi tiết
+
+</button>
+
+
+
+</div>
+
+`;
+
+    });
+
+
+document.getElementById("result").innerHTML=html;
+
+
+}
+
+function detail(id){
+
+window.location.href=
+`detail.html?id=${id}`;
+}
+</script>
+
+</body>
+</html>

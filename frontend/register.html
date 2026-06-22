@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Đăng ký</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#f2f5fa;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+}
+
+
+.card{
+
+width:350px;
+
+padding:30px;
+
+background:white;
+
+border-radius:10px;
+
+box-shadow:0 0 10px rgba(0,0,0,.1);
+
+}
+
+
+input{
+
+width:100%;
+
+padding:12px;
+
+margin-top:10px;
+
+margin-bottom:15px;
+
+}
+
+
+button{
+
+width:100%;
+
+padding:12px;
+
+background:#2196f3;
+
+color:white;
+
+border:none;
+
+cursor:pointer;
+
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<div class="card">
+
+
+<h2>Đăng ký</h2>
+
+
+
+<input id="fullname"
+placeholder="Họ tên">
+
+
+<input id="email"
+placeholder="Email">
+
+
+<input id="password"
+type="password"
+placeholder="Mật khẩu">
+
+
+<button onclick="register()">
+
+Đăng ký
+
+</button>
+
+
+</div>
+
+
+
+<script>
+
+
+async function register(){
+
+
+let full_name=
+
+document.getElementById("fullname").value;
+
+
+
+let email=
+
+document.getElementById("email").value;
+
+
+
+let password=
+
+document.getElementById("password").value;
+
+
+
+const response=await fetch(
+
+'http://localhost:5000/api/auth/register',
+
+{
+
+method:'POST',
+
+
+headers:{
+
+'Content-Type':'application/json'
+
+},
+
+body:JSON.stringify({
+
+
+full_name,
+email,
+password
+
+
+})
+
+}
+
+);
+
+
+
+const data=
+
+await response.json();
+
+
+
+alert(data.message);
+
+
+
+}
+
+
+</script>
+
+
+</body>
+
+
+</html>

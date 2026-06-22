@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Chi tiết thuốc</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+background:#f2f5fa;
+padding:30px;
+
+}
+
+
+.card{
+
+background:white;
+padding:30px;
+
+border-radius:10px;
+
+box-shadow:0 0 5px rgba(0,0,0,.1);
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+
+
+h1{
+
+margin-bottom:20px;
+
+}
+
+
+p{
+
+margin-top:10px;
+
+}
+
+
+
+button{
+
+margin-top:20px;
+
+padding:10px 20px;
+
+background:#2196F3;
+
+color:white;
+
+border:none;
+
+cursor:pointer;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<div id="detail">
+
+
+</div>
+
+
+
+<script>
+
+
+async function loadDrug(){
+
+
+const params=
+new URLSearchParams(
+window.location.search
+);
+
+
+const id=
+params.get("id");
+
+
+
+const response=
+await fetch(
+
+`http://localhost:5000/api/drugs/${id}`
+
+);
+
+
+
+const drug=
+await response.json();
+
+
+
+document.getElementById(
+
+"detail"
+
+).innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+${drug.trade_name}
+
+</h1>
+
+
+
+<p>
+
+Hoạt chất:
+${drug.active_ingredient}
+
+</p>
+
+
+
+<p>
+
+Công dụng:
+${drug.usage_text}
+
+</p>
+
+
+
+<p>
+
+Liều dùng:
+${drug.dosage}
+
+</p>
+
+
+
+<p>
+
+Tác dụng phụ:
+${drug.side_effects}
+
+</p>
+
+
+
+<button
+
+onclick="back()"
+
+>
+
+Quay lại
+
+
+</button>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+function back(){
+
+window.history.back();
+
+}
+
+
+
+loadDrug();
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
