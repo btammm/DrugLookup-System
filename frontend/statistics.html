@@ -13,41 +13,150 @@ Thống kê
 
 
 <style>
-
 body{
 
 font-family:Arial;
 
-padding:30px;
+background:#f4f7fb;
 
-background:#f2f5fa;
+padding:40px;
 
 }
+
+
+
+h1{
+
+font-size:40px;
+
+margin-bottom:40px;
+
+}
+
 
 
 .section{
 
+
 background:white;
 
-padding:20px;
 
-margin-bottom:20px;
+padding:30px;
 
-border-radius:10px;
+
+margin-bottom:30px;
+
+
+border-radius:20px;
+
+
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
 
 }
+
+
+
+
+.section h2{
+
+
+margin-bottom:25px;
+
+
+font-size:30px;
+
+
+}
+
+
 
 
 .card{
 
-padding:10px;
 
-margin-top:10px;
+display:flex;
 
-background:#eee;
+
+justify-content:space-between;
+
+
+align-items:center;
+
+
+
+padding:18px 25px;
+
+
+margin-bottom:15px;
+
+
+
+border-radius:12px;
+
+
+background:#f7f9fc;
+
+
+
+transition:.3s;
+
 
 }
 
+
+
+
+.card:hover{
+
+
+background:#e8f0ff;
+
+
+transform:translateY(-2px);
+
+
+}
+
+
+
+
+.name{
+
+
+font-size:18px;
+
+
+font-weight:600;
+
+
+}
+
+
+
+
+.total{
+
+
+background:#4CAF50;
+
+
+padding:6px 15px;
+
+
+border-radius:30px;
+
+
+color:white;
+
+
+font-size:14px;
+
+
+font-weight:bold;
+
+
+}
 
 </style>
 
@@ -187,19 +296,25 @@ u=>{
 
 html+=`
 
-
 <div class="card">
 
-${u.usage_name}
+<div class="name">
 
--
-
-${u.total}
-
+🩺 ${u.usage_name}
 
 </div>
 
 
+
+<div class="total">
+
+${u.total}
+
+</div>
+
+
+
+</div>
 
 `;
 
