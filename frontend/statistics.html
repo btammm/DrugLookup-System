@@ -162,11 +162,9 @@ async function loadUsage(){
 
 
 
-const response=
+const response = await fetch(
 
-await fetch(
-
-`${API_URL}/api/drugs`
+`${API_URL}/api/drugs/stats/top-usages`
 
 );
 
